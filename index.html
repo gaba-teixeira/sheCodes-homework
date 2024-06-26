@@ -13,5 +13,26 @@
       <option value="paris">Paris 🇫🇷</option>
       <option value="tokyo">Tokyo 🇯🇵</option>
     </select>
+    <script>
+      function showTimeZone(event) {
+        if (event.target.value === "sydney") alert(`${sydneyTime}`);
+        if (event.target.value === "paris") alert(`${parisTime}`);
+        if (event.target.value === "tokyo") alert(`${tokyoTime}`);
+      }
+
+      let sydneyTime = moment()
+        .tz("Australia/Sydney")
+        .format("dddd, MMMM D, YYYY h:m A");
+
+      let parisTime = moment()
+        .tz("Europe/Paris")
+        .format("dddd, MMMM D, YYYY h:m A");
+
+      let tokyoTime = moment()
+        .tz("Asia/Tokyo")
+        .format("dddd, MMMM D, YYYY h:m A");
+      let countriesSelect = document.querySelector("#countries");
+      countriesSelect.addEventListener("change", showTimeZone);
+    </script>
   </body>
 </html>
